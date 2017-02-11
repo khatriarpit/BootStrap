@@ -1,5 +1,12 @@
 package sampleApplication.controllers;
 
+import org.hibernate.service.spi.ServiceException;
+import org.springframework.data.annotation.QueryAnnotation;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMethod;
+import sampleApplication.models.StatusModel;
 import sampleApplication.models.User;
 import sampleApplication.models.UserDao;
 
@@ -7,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.ws.rs.QueryParam;
+import java.util.List;
 
 @Controller
 @RequestMapping(value="/user")
@@ -54,5 +64,16 @@ public class UserController {
     }
     return "User succesfully saved!";
   }
+  /*UrlConstants.FEED_USER_REGISTER*/
+  @RequestMapping(value = "/api/v1/getPhoneNumberByName", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+  public final ResponseEntity<StatusModel> Register(@QueryParam("userName") final String userName) throws ServiceException {
+    StatusModel addStatus=new StatusModel();
+
+    List<User> listOfUserwithPhoneDtlsByUsername = _userDao.getPhoneNumbersByEmployeeName(userName);
+    addStatus.setData(listOfUserwithPhoneDtlsByUsername);
+
+    return new ResponseEntity<StatusModel>(addStatus, HttpStatus.OK);
+  }
+
 
 } // class UserController

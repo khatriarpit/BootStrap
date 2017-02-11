@@ -5,5 +5,6 @@
 /home/emxcel/Arpit/Project/spring-boot-mysql-hibernate/src/main/java/sampleApplication/models/UserDao.java
 /home/emxcel/Arpit/Project/spring-boot-mysql-hibernate/src/main/java/sampleApplication/Application.java
 /home/emxcel/Arpit/Project/spring-boot-mysql-hibernate/src/main/java/sampleApplication/controllers/TestController.java
+/home/emxcel/Arpit/Project/spring-boot-mysql-hibernate/src/main/java/sampleApplication/models/StatusModel.java
 /home/emxcel/Arpit/Project/spring-boot-mysql-hibernate/src/main/java/sampleApplication/controllers/UserController.java
 /home/emxcel/Arpit/Project/spring-boot-mysql-hibernate/src/main/java/sampleApplication/configs/DatabaseConfig.java

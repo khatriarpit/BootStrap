@@ -1,11 +1,15 @@
 package sampleApplication.models;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -51,4 +55,26 @@ public class UserDao {
     return;
   }
 
+  public List<User> getPhoneNumbersByEmployeeName(String userName) {
+
+    Criteria c = getSession().createCriteria(User.class);
+    c.add(userName == null ? Restrictions.isNull("userName") : Restrictions.eq("userName", userName));
+    List listOfUser = c.list();
+
+    for (Iterator iterator1 =
+         listOfUser.iterator(); iterator1.hasNext(); ) {
+      User user = (User) iterator1.next();
+      System.out.print("Email " + user.getEmail());
+      System.out.print("UserName: " + user.getUserName());
+      Set phoneDtls = user.getPhoneDtls();
+      for (Iterator iterator2 =
+           phoneDtls.iterator(); iterator2.hasNext(); ) {
+        PhoneDetails phoneDetails = (PhoneDetails) iterator2.next();
+        System.out.println("PhoneNUmber: " + phoneDetails.getPhoneNumber());
+      }
+
+
+    }
+    return listOfUser;
+  }
 } // class UserDao
