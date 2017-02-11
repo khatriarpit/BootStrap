@@ -1,0 +1,9 @@
+sampleApplication/Application.class
+sampleApplication/configs/WebMvcConfig.class
+sampleApplication/controllers/UserController.class
+sampleApplication/configs/DatabaseConfig.class
+sampleApplication/controllers/TestController.class
+sampleApplication/models/User.class
+sampleApplication/controllers/MainController.class
+sampleApplication/models/PhoneDetails.class
+sampleApplication/models/UserDao.class
